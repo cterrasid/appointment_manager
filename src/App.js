@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import Form from "./Form";
 
 const App = () => {
-  //1. En App, creo el state de una cita, donde el estado inicial es un array vacío. Hago un console.log(appointment) y confirmo
+  //1. En App, creo el state del listado de personas, donde el estado inicial es un array vacío. Hago un console.log(list) y confirmo
   const [list, setList] = useState([]);
 
   return (
