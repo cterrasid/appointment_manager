@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
-import { valueToNode } from "@babel/types";
 
+//ESTE COMPONENTE RECOJE LOS DATOS DEL FORMULARIO
 const Form = () => {
   const [person, setPerson] = useState({
     fullname: "",
@@ -11,11 +11,20 @@ const Form = () => {
 
   const handleInputChange = e => {
     const { name, value } = e.target;
-
-    setPerson((person[name] = value));
-
-    console.log(person);
+    setPerson({
+      //Tomo una copia de lo que tenga en el objeto con el spread operator
+      ...person,
+      //Localizo el name de mi e.target y lo relaciono con lo que tengo en el objeto. Si son iguales, se agrega el value que pongo en el input
+      [name]: value,
+    });
   };
+
+  const handleButtonClick=e=>{
+    e.preventDefault();
+    //Pasar la cita al componente App que contiene el state
+
+    //Reiniciar el state, o sea, reinicia el formulario
+  }
 
   return (
     <Fragment>
@@ -56,7 +65,7 @@ const Form = () => {
           onChange={handleInputChange}
         />
 
-        <button type="submit" className="button-primary u-full-width">
+        <button type="submit" className="button-primary u-full-width" onSubmit={handleButtonClick}>
           Add
         </button>
       </form>
